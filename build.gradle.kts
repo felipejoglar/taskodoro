@@ -28,6 +28,7 @@ buildscript {
         classpath(libs.androidBuildTools)
         classpath(libs.sqlDelight)
         classpath(libs.hilt)
+        classpath(libs.paparazzi)
     }
 }
 
