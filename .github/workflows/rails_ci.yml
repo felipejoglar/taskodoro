@@ -20,15 +20,5 @@ jobs:
         with:
           bundler-cache: true
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.11.0
-          cache: yarn
-
-      - name: Install packages
-        run: |
-          yarn install --pure-lockfile
-
       - name: Run tests
         run: bin/rspec
