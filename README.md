@@ -4,6 +4,10 @@
 </p>
 
 <p align="center">
+        <a href="https://github.com/felipejoglar/taskodoro/actions/workflows/rails_ci.yml"><img src="https://github.com/felipejoglar/taskodoro/actions/workflows/rails_ci.yml/badge.svg" alt="Ruby on Rails CI" /></a>
+</p>
+
+<p align="center">
     Taskodoro is <i>the</i> productivity app made with Ruby on Rails
 </p>
 
