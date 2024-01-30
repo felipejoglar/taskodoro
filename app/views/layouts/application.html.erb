@@ -6,6 +6,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= favicon_link_tag "general/favicon.ico", rel: "icon", type: nil %>
+    <%= favicon_link_tag "general/favicon-32x32.png", rel: "icon", sizes: "32x32", type: "image/png" %>
+    <%= favicon_link_tag "general/favicon-16x16.png", rel: "icon", sizes: "16x16", type: "image/png" %>
+    <%= favicon_link_tag "general/apple-touch-icon.png", rel: "apple-touch-icon", type: "image/png" %>
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
