@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Taskodoro</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -11,13 +11,12 @@
     <%= favicon_link_tag "general/favicon-16x16.png", rel: "icon", sizes: "16x16", type: "image/png" %>
     <%= favicon_link_tag "general/apple-touch-icon.png", rel: "apple-touch-icon", type: "image/png" %>
 
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "tailwind", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="taskodoro">
+    <main>
       <%= yield %>
     </main>
   </body>

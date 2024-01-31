@@ -28,4 +28,9 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  app_name: "Taskodoro"
+
+  landing:
+    welcome: "Welcome to"
+    log_in: "Log in"
+    sign_up: "Sign up"
