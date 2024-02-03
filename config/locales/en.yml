@@ -30,7 +30,28 @@
 en:
   app_name: "Taskodoro"
 
+  common:
+    sign_up: "Sign up"
+
   landing:
     welcome: "Welcome to"
     log_in: "Log in"
-    sign_up: "Sign up"
+
+  sign_up:
+    title: "Create a new account"
+    subtitle: "Make the best of your time • Boost your productivity"
+    headline: "Just need a few things to get you going"
+
+    placeholder:
+      name: "Your name"
+      email: "Your email (e.g. mary.smith@gmail.com)"
+      password: "Type your password here..."
+      password_confirmation: "Confirm your password"
+
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password_confirmation:
+              confirmation: "Passwords must match"

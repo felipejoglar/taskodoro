@@ -12,16 +12,24 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 
-Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+class UsersController < ApplicationController
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      redirect_to root_path, notice: "You have signed up successfully!"
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
 
-  # Defines the root path route ("/")
-  root "landing#index"
+  def new
+    @user = User.new
+  end
 
-  post "signup", to: "users#create"
-  get "signup", to: "users#new"
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
 end
