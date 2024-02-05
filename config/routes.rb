@@ -24,4 +24,10 @@ Rails.application.routes.draw do
 
   post "signup", to: "users#create"
   get "signup", to: "users#new"
+
+  post "login", to: "sessions#create"
+  get "login", to: "sessions#new"
+  delete "logout", to: "sessions#destroy"
+
+  get ":user_id", to: "home#index", as: :home
 end

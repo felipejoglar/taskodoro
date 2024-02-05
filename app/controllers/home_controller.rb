@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #    Copyright 2024 Felipe Joglar
 #
 #    Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,24 +14,9 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 
-class UsersController < ApplicationController
+class HomeController < ApplicationController
+  before_action :authenticate_user!
 
-  def create
-    @user = User.new(user_params)
-    if @user.save
-      login @user
-    else
-      render :new, status: :unprocessable_entity
-    end
-  end
-
-  def new
-    @user = User.new
-  end
-
-  private
-
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  def index
   end
 end
