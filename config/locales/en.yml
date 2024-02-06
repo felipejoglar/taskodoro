@@ -55,6 +55,22 @@ en:
       error_message: "Incorrect email or password."
       forgot_password: "Forgot your password?"
 
+    forgot_password:
+      title: "Forgot your password?"
+      headline: "Enter your email address below and we’ll send you password reset instructions."
+      placeholder: "Enter your email address..."
+      button: "Email me reset instructions"
+
+    password_reset:
+      title: "Reset your password"
+      password_label: "Enter a new password"
+      confirmation_label: "Confirm your password"
+      button: "Save my password"
+
+      message:
+        confirmation: "Check your email for reset instructions."
+        expired: "Sorry, your password reset link has expired"
+
   activerecord:
     errors:
       models:

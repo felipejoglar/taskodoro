@@ -40,7 +40,7 @@
 
   /* Forms */
   .form-container {
-    @apply bg-light-subtle/50 dark:bg-dark-subtle/50 rounded-lg my-4 px-8 pt-2
+    @apply bg-light-subtle/50 dark:bg-dark-subtle/50 rounded-lg my-4 px-8 py-4
   }
 
   .error-container {

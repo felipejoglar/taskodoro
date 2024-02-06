@@ -32,8 +32,11 @@
         <%= form.password_field :password_confirmation, placeholder: t("auth.sign_up.placeholder.password_confirmation"), required: true, class: "input #{ "input-error" if error}" %>
       </div>
       <div class="text-center">
-        <%= form.submit t("auth.signup"), class: "btn-primary mx-0 mb-8 w-full" %>
+        <%= form.submit t("auth.signup"), class: "btn-primary mx-0 w-full" %>
       </div>
     <% end %>
+  </div>
+  <div class="text-center text-sm mb-4">
+    Already have an account. <%= link_to "Log in", login_path %>
   </div>
 </div>
