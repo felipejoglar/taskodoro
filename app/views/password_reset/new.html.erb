@@ -1,0 +1,18 @@
+<div class="max-w-md mx-auto">
+  <div class="text-center">
+    <img class="max-w-24 mx-auto mb-4 mt-16" src="<%= asset_path("logo-coloured.svg") %>" alt="Taskodoro logo">
+    <h2 class="my-4"><%= t("auth.forgot_password.title") %></h2>
+  </div>
+  <div class="form-container">
+    <p class="m-2"><%= t("auth.forgot_password.headline") %></p>
+    <%= form_with url: password_path, scope: :user do |form| %>
+      <%= render "shared/form_flash", object: form.object %>
+      <div>
+        <%= form.email_field :email, placeholder: t("auth.forgot_password.placeholder"), required: true, autofocus: true, class: "input" %>
+      </div>
+      <div class="text-center">
+        <%= form.submit t("auth.forgot_password.button"), class: "btn-primary mx-0 w-full" %>
+      </div>
+    <% end %>
+  </div>
+</div>

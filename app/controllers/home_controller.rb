@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #    Copyright 2024 Felipe Joglar
 #
 #    Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,24 +14,9 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 
-class User < ApplicationRecord
-  has_secure_password
+class HomeController < ApplicationController
+  before_action :authenticate_user!
 
-  validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, presence: true, uniqueness: true
-  normalizes :email, with: -> (email) { email.strip.downcase }
-
-
-  def password_reset_requested
-    UserMailer.with(user: self, token: generate_token_for(:password_reset))
-              .password_reset
-              .deliver_later
-  end
-
-  private
-
-  RESET_PASSWORD_TOKEN_EXPIRATION = 15.minutes
-
-  generates_token_for :password_reset, expires_in: RESET_PASSWORD_TOKEN_EXPIRATION do
-    password_salt&.last(12)
+  def index
   end
 end

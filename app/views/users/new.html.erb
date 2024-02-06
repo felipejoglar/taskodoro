@@ -1,39 +1,36 @@
 <div class="max-w-md mx-auto">
   <div class="text-center">
     <img class="max-w-24 mx-auto mb-4 mt-16" src="<%= asset_path("logo-coloured.svg") %>" alt="Taskodoro logo">
-    <h2 class="my-4"><%= t("sign_up.title") %></h2>
-    <h4 class="font-bold"><%= t("sign_up.subtitle") %></h4>
+    <h2 class="my-4"><%= t("auth.sign_up.title") %></h2>
+    <h4 class="font-bold"><%= t("auth.sign_up.subtitle") %></h4>
   </div>
   <div class="form-container">
-    <p class="font-bold text-center m-2"><%= t("sign_up.headline") %></p>
+    <p class="font-bold text-center m-2"><%= t("auth.sign_up.headline") %></p>
     <%= form_with model: @user, url: signup_path do |form| %>
-      <% if form.object.errors.any? %>
-        <div class="error-container">
-          <% form.object.errors.full_messages.each do |message| %>
-            <%= message %>
-          <% end %>
-        </div>
-      <% end %>
+      <%= render "shared/form_flash", object: form.object %>
+      <% error = form.object.errors.messages.key?(:password_confirmation) %>
       <div>
         <%= form.label :name, class: "label" %>
-        <%= form.text_field :name, placeholder: t("sign_up.placeholder.name"), required: true, class: "input" %>
+        <%= form.text_field :name, placeholder: t("auth.sign_up.placeholder.name"), required: true, autofocus: !error, class: "input" %>
       </div>
       <div>
         <%= form.label :email, class: "label" %>
-        <%= form.email_field :email, placeholder: t("sign_up.placeholder.email"), required: true, class: "input" %>
+        <%= form.email_field :email, placeholder: t("auth.placeholder.email"), required: true, class: "input" %>
       </div>
-      <% error = form.object.errors.messages.key?(:password_confirmation) %>
       <div>
         <%= form.label :password, class: "label" %>
-        <%= form.password_field :password, placeholder: t("sign_up.placeholder.password"), required: true, class: "input #{ "input-error" if error}" %>
+        <%= form.password_field :password, placeholder: t("auth.placeholder.password"), required: true, autofocus: error, class: "input #{ "input-error" if error}" %>
       </div>
       <div>
         <%= form.label :password_confirmation, class: "label" %>
-        <%= form.password_field :password_confirmation, placeholder: t("sign_up.placeholder.password_confirmation"), required: true, class: "input #{ "input-error" if error}" %>
+        <%= form.password_field :password_confirmation, placeholder: t("auth.sign_up.placeholder.password_confirmation"), required: true, class: "input #{ "input-error" if error}" %>
       </div>
       <div class="text-center">
-        <%= form.submit t("common.sign_up"), class: "btn-primary mx-0 mb-8 w-full" %>
+        <%= form.submit t("auth.signup"), class: "btn-primary mx-0 w-full" %>
       </div>
     <% end %>
+  </div>
+  <div class="text-center text-sm mb-4">
+    Already have an account. <%= link_to "Log in", login_path %>
   </div>
 </div>

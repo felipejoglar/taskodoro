@@ -30,23 +30,46 @@
 en:
   app_name: "Taskodoro"
 
-  common:
-    sign_up: "Sign up"
-
   landing:
     welcome: "Welcome to"
-    log_in: "Log in"
 
-  sign_up:
-    title: "Create a new account"
-    subtitle: "Make the best of your time • Boost your productivity"
-    headline: "Just need a few things to get you going"
+  auth:
+    signup: "Sign up"
+    login: "Log in"
 
     placeholder:
-      name: "Your name"
-      email: "Your email (e.g. mary.smith@gmail.com)"
+      email: "Your email (e.g. mary@smith.com)"
       password: "Type your password here..."
-      password_confirmation: "Confirm your password"
+
+    sign_up:
+      title: "Create a new account"
+      subtitle: "Make the best of your time • Boost your productivity"
+      headline: "Just need a few things to get you going"
+
+      placeholder:
+        name: "Your name"
+        password_confirmation: "Confirm your password"
+
+    log_in:
+      title: "Log in to Taskodoro"
+      error_message: "Incorrect email or password."
+      forgot_password: "Forgot your password?"
+
+    forgot_password:
+      title: "Forgot your password?"
+      headline: "Enter your email address below and we’ll send you password reset instructions."
+      placeholder: "Enter your email address..."
+      button: "Email me reset instructions"
+
+    password_reset:
+      title: "Reset your password"
+      password_label: "Enter a new password"
+      confirmation_label: "Confirm your password"
+      button: "Save my password"
+
+      message:
+        confirmation: "Check your email for reset instructions."
+        expired: "Sorry, your password reset link has expired"
 
   activerecord:
     errors:

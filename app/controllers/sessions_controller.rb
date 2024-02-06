@@ -12,24 +12,26 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 
-class User < ApplicationRecord
-  has_secure_password
+class SessionsController < ApplicationController
+  before_action :redirect_if_authenticated, only: [:create, :new]
 
-  validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, presence: true, uniqueness: true
-  normalizes :email, with: -> (email) { email.strip.downcase }
-
-
-  def password_reset_requested
-    UserMailer.with(user: self, token: generate_token_for(:password_reset))
-              .password_reset
-              .deliver_later
+  def new
   end
 
-  private
+  def create
+    email = params[:user][:email].strip.downcase
+    password = params[:user][:password]
 
-  RESET_PASSWORD_TOKEN_EXPIRATION = 15.minutes
+    if (user = User.authenticate_by(email: email, password: password))
+      login user
+    else
+      flash.now[:alert] = t("auth.log_in.error_message")
+      render :new, status: :unprocessable_entity
+    end
+  end
 
-  generates_token_for :password_reset, expires_in: RESET_PASSWORD_TOKEN_EXPIRATION do
-    password_salt&.last(12)
+  def destroy
+    logout
+    redirect_to root_path
   end
 end
