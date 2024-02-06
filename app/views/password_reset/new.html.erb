@@ -6,13 +6,7 @@
   <div class="form-container">
     <p class="m-2"><%= t("auth.forgot_password.headline") %></p>
     <%= form_with url: password_path, scope: :user do |form| %>
-      <% if flash.any? %>
-        <div class="error-container">
-          <% flash.each do |_, message| %>
-            <%= message %>
-          <% end %>
-        </div>
-      <% end %>
+      <%= render "shared/form_flash", object: form.object %>
       <div>
         <%= form.email_field :email, placeholder: t("auth.forgot_password.placeholder"), required: true, autofocus: true, class: "input" %>
       </div>

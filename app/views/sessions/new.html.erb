@@ -5,13 +5,7 @@
   </div>
   <div class="form-container">
     <%= form_with url: login_path, scope: :user do |form| %>
-      <% if flash.any? %>
-        <div class="error-container">
-          <% flash.each do |_, message| %>
-            <%= message %>
-          <% end %>
-        </div>
-      <% end %>
+      <%= render "shared/form_flash", object: form.object %>
       <div>
         <%= form.label :email, class: "label" %>
         <%= form.email_field :email, placeholder: t("auth.placeholder.email"), required: true, autofocus: true, class: "input" %>

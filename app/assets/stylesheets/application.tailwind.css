@@ -43,8 +43,16 @@
     @apply bg-light-subtle/50 dark:bg-dark-subtle/50 rounded-lg my-4 px-8 py-4
   }
 
-  .error-container {
-    @apply w-full p-2 mb-2 bg-error/10 border border-error rounded-md text-center text-error
+  .message {
+    @apply w-full p-2 mb-2 border rounded-md text-center
+  }
+
+  .alert {
+    @apply bg-error/10 border-error text-error
+  }
+
+  .notice {
+    @apply bg-tertiary/10 border-tertiary text-dark dark:text-tertiary
   }
 
   .label {
@@ -56,7 +64,7 @@
   }
 
   .input-error {
-    @apply placeholder:text-error border-error focus:shadow-error/50 focus:border-error
+    @apply placeholder:text-error/80 border-error focus:shadow-error/50 focus:border-error
   }
 }
 
