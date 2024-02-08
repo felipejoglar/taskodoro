@@ -11,6 +11,14 @@ jobs:
     name: Run Unit Tests
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+        ports: ["5432:5432"]
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -21,4 +29,10 @@ jobs:
           bundler-cache: true
 
       - name: Run tests
-        run: bin/rake
+        env:
+          DATABASE_URL: postgres://postgres:password@localhost:5432/test
+          RAILS_ENV: test
+        run: |
+          bin/rails test:prepare
+          bin/rails db:test:prepare
+          bin/rails test
