@@ -31,7 +31,7 @@ module Authentication
     redirect_to home_path(user.id)
   end
 
-  def logout
+  def sign_out
     reset_session
   end
 
