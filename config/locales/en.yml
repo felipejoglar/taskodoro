@@ -45,6 +45,7 @@ en:
       title: "Create a new account"
       subtitle: "Make the best of your time • Boost your productivity"
       headline: "Just need a few things to get you going"
+      already_signed_up: "Already have an account."
 
       placeholder:
         name: "Your name"
