@@ -35,4 +35,11 @@ Rails.application.routes.draw do
   patch "password", to: "password_reset#update"
 
   get ":user_id", to: "home#index", as: :home
+
+  # API endpoints
+  namespace :api do
+    namespace :v1 do
+      resources :login, only: :create
+    end
+  end
 end
