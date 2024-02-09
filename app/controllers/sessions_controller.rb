@@ -23,9 +23,9 @@ class SessionsController < ApplicationController
     password = params[:user][:password]
 
     if (user = User.authenticate_by(email: email, password: password))
-      login user
+      sign_in user
     else
-      flash.now[:alert] = t("auth.log_in.error_message")
+      flash.now[:alert] = t("auth.sign_in.error_message")
       render :new, status: :unprocessable_entity
     end
   end

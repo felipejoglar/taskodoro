@@ -24,7 +24,7 @@ module Authentication
     helper_method :user_signed_in?
   end
 
-  def login(user)
+  def sign_in(user)
     reset_session
     session[:current_user_id] = user.id
 

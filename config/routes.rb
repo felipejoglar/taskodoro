@@ -25,8 +25,8 @@ Rails.application.routes.draw do
   post "signup", to: "users#create"
   get "signup", to: "users#new"
 
-  post "login", to: "sessions#create"
-  get "login", to: "sessions#new"
+  post "signin", to: "sessions#create"
+  get "signin", to: "sessions#new"
   delete "logout", to: "sessions#destroy"
 
   get "forgot_password", to: "password_reset#new"
