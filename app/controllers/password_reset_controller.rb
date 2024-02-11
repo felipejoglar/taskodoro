@@ -15,6 +15,7 @@
 #    limitations under the License.
 
 class PasswordResetController < ApplicationController
+  skip_before_action :authenticate_user!
   before_action :user_by_token, only: [:edit, :update]
 
   def new
@@ -23,7 +24,7 @@ class PasswordResetController < ApplicationController
   def create
     User.find_by(email: params[:user][:email])&.password_reset_requested
 
-    redirect_to login_path, notice: t("auth.password_reset.message.confirmation")
+    redirect_to signin_path, notice: t("auth.password_reset.message.confirmation")
   end
 
   def edit
@@ -31,7 +32,7 @@ class PasswordResetController < ApplicationController
 
   def update
     if @user.update(password_params)
-      login @user
+      sign_in @user
     else
       render :edit, status: :unprocessable_entity
     end

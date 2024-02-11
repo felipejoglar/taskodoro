@@ -35,7 +35,7 @@ en:
 
   auth:
     signup: "Sign up"
-    login: "Log in"
+    signin: "Sign in"
 
     placeholder:
       email: "Your email (e.g. mary@smith.com)"
@@ -45,13 +45,14 @@ en:
       title: "Create a new account"
       subtitle: "Make the best of your time • Boost your productivity"
       headline: "Just need a few things to get you going"
+      already_signed_up: "Already have an account."
 
       placeholder:
         name: "Your name"
         password_confirmation: "Confirm your password"
 
-    log_in:
-      title: "Log in to Taskodoro"
+    sign_in:
+      title: "Sign in to Taskodoro"
       error_message: "Incorrect email or password."
       forgot_password: "Forgot your password?"
 

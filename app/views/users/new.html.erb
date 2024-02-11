@@ -31,6 +31,6 @@
     <% end %>
   </div>
   <div class="text-center text-sm mb-4">
-    Already have an account. <%= link_to "Log in", login_path %>
+    <%= t("auth.sign_up.already_signed_up") %> <%= link_to t("auth.signin"), signin_path %>
   </div>
 </div>
