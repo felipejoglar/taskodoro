@@ -18,10 +18,7 @@ module Authentication
   extend ActiveSupport::Concern
 
   included do
-    before_action :current_user
-
-    helper_method :current_user
-    helper_method :user_signed_in?
+    helper_method :current_user, :user_signed_in?
   end
 
   def sign_in(user)
@@ -40,16 +37,22 @@ module Authentication
   end
 
   def authenticate_user!
-    redirect_to root_path unless user_signed_in?
+    if current_user.blank?
+      redirect_to root_path
+    end
   end
 
   private
 
-  def current_user
-    Current.user ||= session[:current_user_id] && User.find_by(id: session[:current_user_id])
+  def user_signed_in?
+    current_user.present?
   end
 
-  def user_signed_in?
-    Current.user.present?
+  def current_user
+    Current.user ||= authenticate_user_from_session
+  end
+
+  def authenticate_user_from_session
+    session[:current_user_id] && User.find_by(id: session[:current_user_id])
   end
 end

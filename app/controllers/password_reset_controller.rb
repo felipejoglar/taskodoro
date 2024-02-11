@@ -15,6 +15,7 @@
 #    limitations under the License.
 
 class PasswordResetController < ApplicationController
+  skip_before_action :authenticate_user!
   before_action :user_by_token, only: [:edit, :update]
 
   def new

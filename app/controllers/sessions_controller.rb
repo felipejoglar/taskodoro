@@ -13,16 +13,14 @@
 #    limitations under the License.
 
 class SessionsController < ApplicationController
-  before_action :redirect_if_authenticated, only: [:create, :new]
+  skip_before_action :authenticate_user!, only: [:new, :create]
+  before_action :redirect_if_authenticated, only: :new
 
   def new
   end
 
   def create
-    email = params[:user][:email].strip.downcase
-    password = params[:user][:password]
-
-    if (user = User.authenticate_by(email: email, password: password))
+    if (user = User.authenticate_by(authentication_params))
       sign_in user
     else
       flash.now[:alert] = t("auth.sign_in.error_message")
@@ -33,5 +31,14 @@ class SessionsController < ApplicationController
   def destroy
     sign_out
     redirect_to root_path
+  end
+
+  private
+
+  def authentication_params
+    {
+      email: params[:user][:email].strip.downcase,
+      password: params[:user][:password],
+    }
   end
 end
