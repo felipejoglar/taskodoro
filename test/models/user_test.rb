@@ -25,14 +25,24 @@ class UserTest < ActiveSupport::TestCase
 
   test "user password should be long enough" do
     invalid_password = "a" * (MIN_PASSWORD_LENGTH - 1)
-    assert valid_user(password: invalid_password).invalid?, message: "A password with #{invalid_password.length} characters should not be valid"
+    assert_not valid_user(password: invalid_password).valid?, message: "A password with #{invalid_password.length} characters should not be valid"
     invalid_password = "a" * (MAX_PASSWORD_LENGTH + 1)
-    assert valid_user(password: invalid_password).invalid?, message: "A password with #{invalid_password.length} characters should not be valid"
+    assert_not valid_user(password: invalid_password).valid?, message: "A password with #{invalid_password.length} characters should not be valid"
 
     valid_password = "a" * MIN_PASSWORD_LENGTH
     assert valid_user(password: valid_password).valid?, message: "'A password with #{invalid_password.length} characters should be valid"
     valid_password = "a" * MAX_PASSWORD_LENGTH
     assert valid_user(password: valid_password).valid?, message: "'A password with #{invalid_password.length} characters should be valid"
+  end
+
+  test "user email should be unique" do
+    unique_email = "a_unique@email.com"
+    user = valid_user(email: unique_email)
+    duplicated_user = user.dup
+
+    user.save
+
+    assert_not duplicated_user.valid?, message: "Users with duplicated emails should not be valid"
   end
 
   private
