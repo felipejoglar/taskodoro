@@ -25,6 +25,7 @@
         <%= form.label :password_confirmation, class: "label" %>
         <%= form.password_field :password_confirmation, placeholder: t("auth.sign_up.placeholder.password_confirmation"), required: true, class: "input #{ "input-error" if error}" %>
       </div>
+      <div class="text-xs mb-4"><%= t("auth.sign_up.password_security") %></div>
       <div class="text-center">
         <%= form.submit t("auth.signup"), class: "btn-primary mx-0 w-full" %>
       </div>

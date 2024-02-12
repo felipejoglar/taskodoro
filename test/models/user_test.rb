@@ -7,7 +7,6 @@ class UserTest < ActiveSupport::TestCase
     assert user.errors[:name].any?, message: "Expected name to be present"
     assert user.errors[:email].any?, message: "Expected email to be present"
     assert user.errors[:password].any?, message: "Expected password to be present"
-    p user.errors
   end
 
   test "user email should be valid" do
@@ -24,9 +23,24 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test "user password should be long enough" do
+    invalid_password = "a" * (MIN_PASSWORD_LENGTH - 1)
+    assert valid_user(password: invalid_password).invalid?, message: "A password with #{invalid_password.length} characters should not be valid"
+    invalid_password = "a" * (MAX_PASSWORD_LENGTH + 1)
+    assert valid_user(password: invalid_password).invalid?, message: "A password with #{invalid_password.length} characters should not be valid"
+
+    valid_password = "a" * MIN_PASSWORD_LENGTH
+    assert valid_user(password: valid_password).valid?, message: "'A password with #{invalid_password.length} characters should be valid"
+    valid_password = "a" * MAX_PASSWORD_LENGTH
+    assert valid_user(password: valid_password).valid?, message: "'A password with #{invalid_password.length} characters should be valid"
+  end
+
   private
 
-  def valid_user(name: "A Name", email: "valid@email.com", password: "password")
+  MIN_PASSWORD_LENGTH = 12
+  MAX_PASSWORD_LENGTH = 64
+
+  def valid_user(name: "A Name", email: "valid@email.com", password: "a_long_enough_password")
     User.new(
       name: name,
       email: email,
