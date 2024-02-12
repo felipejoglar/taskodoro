@@ -45,6 +45,13 @@ class UserTest < ActiveSupport::TestCase
     assert_not duplicated_user.valid?, message: "Users with duplicated emails should not be valid"
   end
 
+  test "user email should be normalized to lowercase and trimmed" do
+    email = "  An_EmaIL@emAiL.cOm   "
+    user = valid_user(email: email)
+
+    assert_equal("an_email@email.com", user.email)
+  end
+
   private
 
   MIN_PASSWORD_LENGTH = 12
