@@ -81,5 +81,7 @@ en:
       models:
         user:
           attributes:
+            password:
+              invalid: "Passwords should be at least 12 characters"
             password_confirmation:
               confirmation: "Passwords must match"
