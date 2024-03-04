@@ -24,15 +24,15 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "user email should be valid" do
-    validEmails = %w{ valid@email.com another-valid@email.org yet.another.valid@email.io }
+    valid_emails = %w{ valid@email.com another-valid@email.org yet.another.valid@email.io }
 
-    validEmails.each do |email|
+    valid_emails.each do |email|
       assert valid_user(email: email).valid?, message: "#{email} should be a valid email"
     end
 
-    validEmails = %w{ in"valid"@email.com a@b@c@email.com in\valid@email.com }
+    valid_emails = %w{ in"valid"@email.com a@b@c@email.com in\valid@email.com }
 
-    validEmails.each do |email|
+    valid_emails.each do |email|
       assert valid_user(email: email).invalid?, message: "#{email} should not be a valid email"
     end
   end
