@@ -7,11 +7,11 @@
     </div>
   <% end %>
 <% elsif object&.errors&.any? %>
-  <% object.errors.messages.each do |_, messages| %>
-    <div class="message alert">
+  <div class="message alert">
+    <% object.errors.messages.each do |t, messages| %>
       <% messages.each do |message| %>
-        <%= message %>
+        <%= message %><br>
       <% end %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 <% end %>
