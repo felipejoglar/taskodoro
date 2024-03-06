@@ -8,7 +8,7 @@
   <% end %>
 <% elsif object&.errors&.any? %>
   <div class="message alert">
-    <% object.errors.messages.each do |t, messages| %>
+    <% object.errors.messages.each do |_, messages| %>
       <% messages.each do |message| %>
         <%= message %><br>
       <% end %>
