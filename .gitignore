@@ -76,27 +76,11 @@ Temporary Items
 ### JetBrains template
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
-
 *.iml
 *.ipr
 *.iws
 /.idea/*
 
-# Exclude non-user-specific stuff
-!.idea/.name
-!.idea/codeInsightSettings.xml
-!.idea/codeStyles/
-!.idea/copyright/
-!.idea/dataSources.xml
-!.idea/detekt.xml
-!.idea/encodings.xml
-!.idea/externalDependencies.xml
-!.idea/fileTemplates/
-!.idea/icon.svg
-!.idea/inspectionProfiles/
-!.idea/runConfigurations/
-!.idea/scopes/
-!.idea/vcs.xml
 
 ### Rails template
 # Ignore bundler config.
