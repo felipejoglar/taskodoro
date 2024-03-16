@@ -36,9 +36,6 @@ class SessionsController < ApplicationController
   private
 
   def authentication_params
-    {
-      email: params[:user][:email].strip.downcase,
-      password: params[:user][:password],
-    }
+    params.require(:user).permit(:email, :password)
   end
 end

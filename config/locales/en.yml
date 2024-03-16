@@ -45,6 +45,7 @@ en:
       title: "Create a new account"
       subtitle: "Make the best of your time • Boost your productivity"
       headline: "Just need a few things to get you going"
+      password_security: "For your security, we require that passwords be at least 12 characters."
       already_signed_up: "Already have an account."
 
       placeholder:
@@ -72,10 +73,15 @@ en:
         confirmation: "Check your email for reset instructions."
         expired: "Sorry, your password reset link has expired"
 
+      mail:
+        subject: "Reset your password"
+
   activerecord:
     errors:
       models:
         user:
           attributes:
+            password:
+              invalid: "Passwords should be at least 12 characters"
             password_confirmation:
               confirmation: "Passwords must match"
