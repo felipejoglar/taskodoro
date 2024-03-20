@@ -1,10 +1,6 @@
 module Authentication
   extend ActiveSupport::Concern
 
-  included do
-    helper_method :current_user, :user_signed_in?
-  end
-
   def sign_in(user)
     reset_session
     session[:current_user_id] = user.id
