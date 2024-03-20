@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
 
+  has_many :projects, dependent: :destroy
+
   EMAIL_REQUIREMENTS = URI::MailTo::EMAIL_REGEXP
   PASSWORD_REQUIREMENTS = /\A.{12,64}\z/
 
