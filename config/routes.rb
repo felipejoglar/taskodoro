@@ -10,9 +10,9 @@ Rails.application.routes.draw do
 
   resource :signup, only: %i[ create new ], controller: "users"
   resource :signin, only: %i[ create new ], controller: "sessions"
-  resource :signout, only: %i[ destroy ], controller: "sessions"
+  resource :signout, only: :destroy, controller: "sessions"
 
-  resource :forgot_password, only: %i[ new ], controller: "passwords"
+  resource :forgot_password, only: :new, controller: "passwords"
   resource :password, only: %i[ create update edit ], controller: "passwords"
 
   scope ":user_id", constraints: { user_id: /\d+/ } do
