@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
   has_many :projects, dependent: :destroy
 
+  after_create :create_default_project
+
   EMAIL_REQUIREMENTS = URI::MailTo::EMAIL_REGEXP
   PASSWORD_REQUIREMENTS = /\A.{12,64}\z/
 
@@ -14,4 +16,10 @@ class User < ApplicationRecord
   validates :password, format: PASSWORD_REQUIREMENTS
 
   normalizes :email, with: -> (email) { email.strip.downcase }
+
+  private
+
+  def create_default_project
+    self.projects.create(name: "Inbox")
+  end
 end

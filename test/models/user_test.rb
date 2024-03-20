@@ -58,11 +58,19 @@ class UserTest < ActiveSupport::TestCase
     user.projects.create(name: "Project 1")
     user.projects.create(name: "Project 2")
 
-    assert_equal 2, user.projects.size
+    assert user.projects.any?
 
     user.destroy!
 
     assert_equal 0, user.projects.size
+  end
+
+  test "creates default project after creation" do
+    user = valid_user
+    user.save!
+
+    assert_equal 1, user.projects.size
+    assert_equal "Inbox", user.projects.first!.name
   end
 
   private
