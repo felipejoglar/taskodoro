@@ -1,13 +1,13 @@
 require "test_helper"
 
-class PasswordResetControllerTest < ActionDispatch::IntegrationTest
+class PasswordsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @name = "Felipe"
     @token = create_user_with(name: @name).generate_token_for(:password_reset)
   end
 
   test "requesting to create a new password" do
-    get forgot_password_url
+    get new_forgot_password_url
 
     assert_response :ok
     assert_select 'h2', I18n  .t("auth.forgot_password.title")
@@ -20,7 +20,7 @@ class PasswordResetControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "updating a password" do
-    get password_edit_url, params: { token: @token }
+    get edit_password_url, params: { token: @token }
 
     assert_response :ok
     assert_select 'h2', I18n.t("auth.password_reset.title")
@@ -34,7 +34,7 @@ class PasswordResetControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "failing to update a password with invalid token" do
-    get password_edit_url, params: { token: @token }
+    get edit_password_url, params: { token: @token }
 
     assert_response :ok
     assert_select 'h2', I18n.t("auth.password_reset.title")
@@ -47,7 +47,7 @@ class PasswordResetControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "failing to update a password with invalid password" do
-    get password_edit_url, params: { token: @token }
+    get edit_password_url, params: { token: @token }
 
     assert_response :ok
     assert_select 'h2', I18n.t("auth.password_reset.title")

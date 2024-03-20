@@ -6,7 +6,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     email = "felipe@taskodoro.com"
     password = "a_valid_password"
 
-    get signin_url
+    get new_signin_url
 
     assert_response :ok
     assert_select 'h2', I18n.t("auth.sign_in.title")
@@ -25,7 +25,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     email = "felipe@taskodoro.com"
     password = "a_valid_password"
 
-    get signin_url
+    get new_signin_url
 
     assert_response :ok
     assert_select 'h2', I18n.t("auth.sign_in.title")
