@@ -8,7 +8,7 @@ class PasswordsController < ApplicationController
   def create
     User.find_by(email: params[:user][:email])&.password_reset_requested
 
-    redirect_to new_signin_path, notice: t("auth.password_reset.message.confirmation")
+    redirect_to sign_in_path, notice: t("auth.password_reset.message.confirmation")
   end
 
   def edit

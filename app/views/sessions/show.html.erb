@@ -4,7 +4,7 @@
     <h2 class="my-4"><%= t("auth.sign_in.title") %></h2>
   </div>
   <div class="form-container">
-    <%= form_with url: signin_path, scope: :user do |form| %>
+    <%= form_with url: sign_in_path, scope: :user do |form| %>
       <%= render "shared/form_flash", object: form.object %>
       <div>
         <%= form.label :email, class: "label" %>
