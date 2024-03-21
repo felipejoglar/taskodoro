@@ -2,7 +2,7 @@ require "test_helper"
 
 class UserMailerTest < ActionMailer::TestCase
 
-  test "password_reset sends the token in the URL" do
+  test "passwords sends the token in the URL" do
     email = "an_email@email.com"
     token = "a_token"
 

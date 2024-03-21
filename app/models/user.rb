@@ -1,5 +1,11 @@
 class User < ApplicationRecord
+  include Resettable
+
   has_secure_password
+
+  has_many :projects, dependent: :destroy
+
+  after_create :create_default_project
 
   EMAIL_REQUIREMENTS = URI::MailTo::EMAIL_REGEXP
   PASSWORD_REQUIREMENTS = /\A.{12,64}\z/
@@ -11,17 +17,9 @@ class User < ApplicationRecord
 
   normalizes :email, with: -> (email) { email.strip.downcase }
 
-  def password_reset_requested
-    UserMailer.with(user: self, token: generate_token_for(:password_reset))
-              .password_reset
-              .deliver_later
-  end
-
   private
 
-  RESET_PASSWORD_TOKEN_EXPIRATION = 15.minutes
-
-  generates_token_for :password_reset, expires_in: RESET_PASSWORD_TOKEN_EXPIRATION do
-    password_salt&.last(12)
+  def create_default_project
+    self.projects.create(name: "Inbox")
   end
 end

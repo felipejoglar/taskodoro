@@ -8,17 +8,16 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "landing#index"
 
-  post "signup", to: "users#create"
-  get "signup", to: "users#new"
+  resource :signup, only: %i[ create new ], controller: "users"
+  resource :signin, only: %i[ create new ], controller: "sessions"
+  resource :signout, only: :destroy, controller: "sessions"
 
-  post "signin", to: "sessions#create"
-  get "signin", to: "sessions#new"
-  delete "signout", to: "sessions#destroy"
+  resource :forgot_password, only: :new, controller: "passwords"
+  resource :password, only: %i[ create update edit ], controller: "passwords"
 
-  get "forgot_password", to: "password_reset#new"
-  post "password", to: "password_reset#create"
-  get "password/edit", to: "password_reset#edit"
-  patch "password", to: "password_reset#update"
+  scope ":user_id", constraints: { user_id: /\d+/ } do
+    get "/", to: "projects#index", as: :home
 
-  get ":user_id", to: "home#index", as: :home
+    resources :projects
+  end
 end

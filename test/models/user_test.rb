@@ -52,6 +52,27 @@ class UserTest < ActiveSupport::TestCase
     assert_equal("an_email@email.com", user.email)
   end
 
+  test "projects are deleted along with user" do
+    user = valid_user
+    user.save!
+    user.projects.create(name: "Project 1")
+    user.projects.create(name: "Project 2")
+
+    assert user.projects.any?
+
+    user.destroy!
+
+    assert_equal 0, user.projects.size
+  end
+
+  test "creates default project after creation" do
+    user = valid_user
+    user.save!
+
+    assert_equal 1, user.projects.size
+    assert_equal "Inbox", user.projects.first!.name
+  end
+
   private
 
   MIN_PASSWORD_LENGTH = 12
