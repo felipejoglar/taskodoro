@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :create]
   before_action :redirect_if_authenticated, only: :show
 
+  layout "landing"
   def create
     if (user = User.authenticate_by(authentication_params))
       sign_in user

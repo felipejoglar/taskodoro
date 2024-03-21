@@ -1,7 +1,4 @@
-<h1>Welcome <%= Current.user.name %></h1>
-<%= button_to "Logout", sign_out_path, method: :delete %>
-<ul>
-  <% @projects.each do |project| %>
-    <li><h3><%= project.name %></h3></li>
-  <% end %>
-</ul>
+<% content_for :title, "Home" %>
+
+<h1 class="text-3xl font-bold mb-4">Welcome to Your Website</h1>
+<p class="text-lg">This is where your main content will be.</p>
