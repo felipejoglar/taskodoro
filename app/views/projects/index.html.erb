@@ -1,7 +1,15 @@
-<h1>Welcome <%= Current.user.name %></h1>
-<%= button_to "Logout", signout_path, method: :delete %>
-<ul>
-  <% @projects.each do |project| %>
-    <li><h3><%= project.name %></h3></li>
-  <% end %>
-</ul>
+<% content_for :title, "Home" %>
+<div class="max-w-screen-lg mx-auto">
+  <h1><%= Current.user.name %>'s Projects</h1>
+  <section>
+    <% unless @projects.empty? %>
+      <ul>
+        <% @projects.each do |project| %>
+          <li><%= render 'projects/project', project: project %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <%= link_to 'New Project', new_project_path(Current.user), class: 'btn-primary' %>
+    <%= button_to 'Log out', sign_out_path(Current.user), method: :delete, class: 'btn-primary' %>
+  </section>
+</div>

@@ -1,0 +1,22 @@
+<div class="max-w-screen-lg mx-auto">
+  <h1 class="text-center mt-4"><%= @project.title %></h1>
+  <div class="form-container">
+    <p>
+      <strong>Description:</strong> <%= @project.description || 'No description provided' %>
+    </p>
+
+    <p>
+      <strong>Created at:</strong> <%= @project.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+    </p>
+
+    <p>
+      <strong>Updated at:</strong> <%= @project.updated_at.strftime('%Y-%m-%d %H:%M:%S') %>
+    </p>
+
+    <div class="flex">
+      <%= link_to 'Edit', edit_project_path(Current.user, @project), class: 'btn-primary' %>
+      <%= button_to 'Delete', project_path(Current.user, @project), data: { turbo_confirm: 'Are you sure?' }, method: :delete, class: 'btn-primary' %>
+      <%= link_to 'Back', projects_path(Current.user), class: 'btn-primary' %>
+    </div>
+  </div>
+</div>

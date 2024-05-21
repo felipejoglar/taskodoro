@@ -3,7 +3,7 @@ require "test_helper"
 class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "creating a new user" do
-    get new_signup_url
+    get signup_url
 
     assert_response :ok
     assert_select 'h2', I18n.t("auth.sign_up.title")
@@ -13,11 +13,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     follow_redirect!
     assert_response :ok
-    assert_select 'h1', 'Welcome Felipe'
+    assert_select 'h1', "Felipe's Projects"
   end
 
   test "failing to create a new user" do
-    get new_signup_url
+    get signup_url
 
     assert_response :ok
     assert_select 'h2', I18n.t("auth.sign_up.title")

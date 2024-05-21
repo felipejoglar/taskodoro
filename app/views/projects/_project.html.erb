@@ -1,0 +1,3 @@
+<%# locals: (project:) %>
+
+<%= link_to project.title, project_path(Current.user, project) %><% if project.description %> — <%= project.description %><% end %>

@@ -1,17 +1,18 @@
 class SessionsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:new, :create]
-  before_action :redirect_if_authenticated, only: :new
+  skip_before_action :authenticate_user!, only: [:show, :create]
+  before_action :redirect_if_authenticated, only: :show
 
-  def new
-  end
-
+  layout "landing"
   def create
     if (user = User.authenticate_by(authentication_params))
       sign_in user
     else
       flash.now[:alert] = t("auth.sign_in.error_message")
-      render :new, status: :unprocessable_entity
+      render :show, status: :unprocessable_entity
     end
+  end
+
+  def show
   end
 
   def destroy

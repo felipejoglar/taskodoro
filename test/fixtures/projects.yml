@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 inbox:
-  name: "Inbox"
+  title: "Inbox"
   user_id: 1
 
 secret:
-  name: "Secret project"
+  title: "Secret project"
   user_id: 1

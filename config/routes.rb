@@ -8,9 +8,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "landing#index"
 
-  resource :signup, only: %i[ create new ], controller: "users"
-  resource :signin, only: %i[ create new ], controller: "sessions"
-  resource :signout, only: :destroy, controller: "sessions"
+  resource :signup, only: %i[ create show ], controller: "users"
+  resource :sign_in, only: %i[ create show ], controller: "sessions"
 
   resource :forgot_password, only: :new, controller: "passwords"
   resource :password, only: %i[ create update edit ], controller: "passwords"
@@ -19,5 +18,7 @@ Rails.application.routes.draw do
     get "/", to: "projects#index", as: :home
 
     resources :projects
+
+    resource :sign_out, only: :destroy, controller: "sessions"
   end
 end

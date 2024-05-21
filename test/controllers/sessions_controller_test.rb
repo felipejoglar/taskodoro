@@ -6,33 +6,33 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     email = "felipe@taskodoro.com"
     password = "a_valid_password"
 
-    get new_signin_url
+    get sign_in_url
 
     assert_response :ok
     assert_select 'h2', I18n.t("auth.sign_in.title")
 
     create_user_with(email: email, password: password)
 
-    post signin_url, params: login_params(email: email, password: password)
+    post sign_in_url, params: login_params(email: email, password: password)
     assert session["current_user_id"], "User should be logged in after creation"
 
     follow_redirect!
     assert_response :ok
-    assert_select 'h1', 'Welcome Felipe'
+    assert_select 'h1', "Felipe's Projects"
   end
 
   test "failing to create a new session" do
     email = "felipe@taskodoro.com"
     password = "a_valid_password"
 
-    get new_signin_url
+    get sign_in_url
 
     assert_response :ok
     assert_select 'h2', I18n.t("auth.sign_in.title")
 
     create_user_with(email: email, password: password)
 
-    post signin_url, params: login_params(email: "not_signed_up@email.com", password: password)
+    post sign_in_url, params: login_params(email: "not_signed_up@email.com", password: password)
     assert_response :unprocessable_entity
 
     assert_select 'div.alert', 1
@@ -43,11 +43,11 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     password = "a_valid_password"
 
     create_user_with(email: email, password: password)
-    post signin_url, params: login_params(email: email, password: password)
+    post sign_in_url, params: login_params(email: email, password: password)
     assert session["current_user_id"], "User should be logged in after creation"
     follow_redirect!
 
-    delete signout_url
+    delete sign_out_url
     refute session["current_user_id"]
 
     follow_redirect!

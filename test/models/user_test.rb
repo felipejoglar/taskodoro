@@ -55,8 +55,8 @@ class UserTest < ActiveSupport::TestCase
   test "projects are deleted along with user" do
     user = valid_user
     user.save!
-    user.projects.create(name: "Project 1")
-    user.projects.create(name: "Project 2")
+    user.projects.create(title: "Project 1")
+    user.projects.create(title: "Project 2")
 
     assert user.projects.any?
 
@@ -70,7 +70,7 @@ class UserTest < ActiveSupport::TestCase
     user.save!
 
     assert_equal 1, user.projects.size
-    assert_equal "Inbox", user.projects.first!.name
+    assert_equal "Inbox", user.projects.first!.title
   end
 
   private

@@ -1,0 +1,20 @@
+<div class="max-w-screen-lg mx-auto">
+  <h1 class="text-center mt-4">Create New Project</h1>
+
+  <div class="form-container">
+    <%= form_with model: @project do |form| %>
+      <%= render "shared/form_flash", object: form.object %>
+      <div>
+        <%= form.label :title, class: "label" %>
+        <%= form.text_field :title, required: true, class: "input" %>
+      </div>
+
+      <div>
+        <%= form.label :description, class: "label" %>
+        <%= form.text_area :description, rows: 3, class: "input" %>
+      </div>
+
+      <%= form.submit "Create Project", class: "btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -19,6 +19,8 @@ module Authentication
   def authenticate_user!
     if current_user.blank?
       redirect_to root_path
+    elsif params[:user_id].to_s != current_user.id.to_s
+      render 'error/404', status: :not_found
     end
   end
 
