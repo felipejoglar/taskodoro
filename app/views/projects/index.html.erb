@@ -1,4 +1,14 @@
 <% content_for :title, "Home" %>
-
-<h1 class="text-3xl font-bold mb-4">Welcome to Your Website</h1>
-<p class="text-lg">This is where your main content will be.</p>
+<div class="max-w-screen-lg mx-auto">
+  <h1><%= Current.user.name %>'s Projects</h1>
+  <section>
+    <% unless @projects.empty? %>
+      <ul>
+        <% @projects.each do |project| %>
+          <li><%= render 'projects/project', project: project %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <%= link_to 'New Project', new_project_path(Current.user), class: 'btn-primary' %>
+  </section>
+</div>

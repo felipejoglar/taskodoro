@@ -19,7 +19,7 @@
 @layer components {
   /* Buttons */
   .btn-primary {
-    @apply inline-block bg-primary hover:opacity-80 no-underline font-normal text-light min-w-32 py-2 px-6 m-2 rounded-full;
+    @apply inline-block bg-primary hover:opacity-80 no-underline font-normal text-light min-w-32 py-2 px-6 m-2 rounded-full text-center;
   }
 
   /* Forms */
@@ -44,7 +44,7 @@
   }
 
   .input {
-    @apply bg-transparent appearance-none placeholder:font-medium placeholder:text-dark/60 dark:placeholder:text-light/60 w-full mb-2 p-2 border border-dark/30 dark:border-light/30 rounded-md focus:shadow focus:shadow-primary/50 focus:outline-none focus:border-primary
+    @apply resize-none bg-transparent appearance-none placeholder:font-medium placeholder:text-dark/60 dark:placeholder:text-light/60 w-full mb-2 p-2 border border-dark/30 dark:border-light/30 rounded-md focus:shadow focus:shadow-primary/50 focus:outline-none focus:border-primary
   }
 
   .input-error {

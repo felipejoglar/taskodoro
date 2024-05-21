@@ -30,7 +30,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
 
     follow_redirect!
     assert_response :ok
-    assert_select 'h1', "Welcome #{@name}"
+    assert_select 'h1', "#{@name}'s Projects"
   end
 
   test "failing to update a password with invalid token" do

@@ -20,6 +20,6 @@ class User < ApplicationRecord
   private
 
   def create_default_project
-    self.projects.create(name: "Inbox")
+    self.projects.create(title: "Inbox")
   end
 end

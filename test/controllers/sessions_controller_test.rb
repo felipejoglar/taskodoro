@@ -18,7 +18,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
 
     follow_redirect!
     assert_response :ok
-    assert_select 'h1', 'Welcome Felipe'
+    assert_select 'h1', "Felipe's Projects"
   end
 
   test "failing to create a new session" do
