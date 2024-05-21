@@ -10,5 +10,6 @@
       </ul>
     <% end %>
     <%= link_to 'New Project', new_project_path(Current.user), class: 'btn-primary' %>
+    <%= button_to 'Log out', sign_out_path(Current.user), method: :delete, class: 'btn-primary' %>
   </section>
 </div>
