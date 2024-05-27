@@ -1,0 +1,39 @@
+html {
+  background: var(--color-background);
+  min-height: -webkit-fill-available;
+  scroll-behavior: smooth
+}
+
+body {
+  align-items: stretch;
+  background: var(--color-background);
+  color: var(--color-on-surface);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family), sans-serif;
+  font-feature-settings: "liga", "ss02";
+  font-size: var(--font-size);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.5rem;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: oklch(var(--lch-grey-lighter) / 0);
+  text-rendering: optimizeLegibility
+}
+
+::selection {
+  background: var(--color-fg-20);
+}
+
+a {
+  color: var(--color-primary);
+  font-weight: 500;
+  letter-spacing: normal;
+  text-decoration: underline;
+  text-decoration-thickness: .09em;
+  text-underline-offset: .09em
+}

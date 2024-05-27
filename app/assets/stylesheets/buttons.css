@@ -1,0 +1,25 @@
+.btn {
+  align-items: center;
+  background-color: var(--btn-background, var(--color-primary));
+  border-radius: var(--btn-border-radius);
+  border: var(--btn-border-size, 0em) solid var(--btn-border-color, var(--color-primary));
+  color: var(--btn-color, var(--color-on-primary));
+  display: inline-flex;
+  gap: 0.5em;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  padding: var(--btn-padding, 0.5em 1.1em);
+}
+
+align-self: flex-start;
+background: var(--color-foreground);
+border-radius: 1.3em;
+color: var(--color-background);
+
+
+font-size: var(--font-size-x-small);
+font-weight: 500;
+gap: .4em;
+letter-spacing: normal;
+white-space: nowrap
