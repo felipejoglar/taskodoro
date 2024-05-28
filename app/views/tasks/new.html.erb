@@ -3,7 +3,7 @@
   <h1 class="text-center mt-4">Create New Task</h1>
 
   <div class="form-container">
-    <%= form_with model: @task, url: project_tasks_path() do |form| %>
+    <%= form_with model: @task, url: project_tasks_path do |form| %>
       <%= render "shared/form_flash", object: form.object %>
       <div>
         <%= form.label :title, class: "label" %>
@@ -15,7 +15,13 @@
         <%= form.text_area :description, rows: 3, class: "input" %>
       </div>
 
+      <div>
+        <%= form.label :due_date %>
+        <%= form.date_field :due_date, min: Date.today, class: "input" %>
+      </div>
+
       <%= form.submit "Create Task", class: "btn-primary" %>
+      <%= link_to 'Back', project_path(Current.user, @project), class: 'btn-primary' %>
     <% end %>
   </div>
 </div>

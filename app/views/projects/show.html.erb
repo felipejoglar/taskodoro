@@ -21,7 +21,7 @@
     </div>
 
     <h2 class="flex">Tasks (<%= @tasks.count %>)</h2>
-    <%= link_to 'New Task', new_project_tasks_path(Current.user, @project), class: 'btn-primary' %>
+    <%= link_to 'New Task', new_project_task_path(Current.user, @project), class: 'btn-primary' %>
 
     <ul>
       <% @tasks.each do |task| %>

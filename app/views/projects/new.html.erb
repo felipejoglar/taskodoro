@@ -16,6 +16,7 @@
       </div>
 
       <%= form.submit "Create Project", class: "btn-primary" %>
+      <%= link_to 'Back', projects_path(Current.user), class: 'btn-primary' %>
     <% end %>
   </div>
 </div>
