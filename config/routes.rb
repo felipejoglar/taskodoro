@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   scope ":user_id", constraints: { user_id: /\d+/ } do
     get "/", to: "projects#index", as: :home
 
-    resources :projects
+    resources :projects do
+      resource :tasks
+    end
 
     resource :sign_out, only: :destroy, controller: "sessions"
   end
