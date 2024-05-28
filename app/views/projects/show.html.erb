@@ -1,3 +1,4 @@
+<% content_for :title, @project.title %>
 <div class="max-w-screen-lg mx-auto">
   <h1 class="text-center mt-4"><%= @project.title %></h1>
   <div class="form-container">
@@ -18,5 +19,16 @@
       <%= button_to 'Delete', project_path(Current.user, @project), data: { turbo_confirm: 'Are you sure?' }, method: :delete, class: 'btn-primary' %>
       <%= link_to 'Back', projects_path(Current.user), class: 'btn-primary' %>
     </div>
+
+    <h2>Tasks (<%= @tasks.count %>)</h2>
+    <ul>
+      <% @tasks.each do |task| %>
+        <li>
+          <%= task.title %> - <%= task.completed ? "Completed" : "Incomplete" %>
+          <p><%= task.description %></p>
+          <p>Due: <%= task.due_date.strftime("%B %d, %Y") if task.due_date.present? %></p>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>
