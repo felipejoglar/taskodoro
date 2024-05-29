@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resource :forgot_password, only: :new, controller: "passwords"
   resource :password, only: %i[ create update edit ], controller: "passwords"
 
-  scope ":user_id", constraints: { user_id: /\d+/ } do
+  scope ":user_id" do
     get "/", to: "projects#index", as: :home
 
     resources :projects do
