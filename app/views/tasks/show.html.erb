@@ -1,0 +1,24 @@
+<% content_for :title, @task.title %>
+<div class="max-w-screen-lg mx-auto">
+  <h1 class="text-center mt-4"><%= @task.title %></h1>
+  <div class="form-container">
+
+    <p>
+      <strong><%= @task.completed ? "Completed" : "Incomplete" %></strong>
+    </p>
+
+    <p>
+      <strong>Description:</strong> <%= @task.description || 'No description provided' %>
+    </p>
+
+    <p>
+      <strong>Due:</strong> <%= @task.due_date.strftime('%B %d, %Y') %>
+    </p>
+
+    <div class="flex">
+      <%= link_to 'Edit', edit_project_task_path(Current.user, @project, @task), class: 'btn-primary' %>
+      <%= button_to 'Delete', project_task_path(Current.user, @project, @task), data: { turbo_confirm: 'Are you sure?' }, method: :delete, class: 'btn-primary' %>
+      <%= link_to 'Back', project_path(Current.user, @project), class: 'btn-primary' %>
+    </div>
+  </div>
+</div>

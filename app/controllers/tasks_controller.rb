@@ -1,9 +1,13 @@
 class TasksController < ApplicationController
   before_action :set_project
-  before_action :set_task, only: %i[ edit update destroy ]
+  before_action :set_task, only: %i[ show edit update destroy ]
+
+  def show
+  end
 
   def new
     @task = Task.new
+    @task.due_date = Date.today
   end
 
   def edit
@@ -21,7 +25,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to_project
+      redirect_to project_task_path(Current.user, @project, @task)
     else
       render :edit
     end
