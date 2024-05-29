@@ -4,7 +4,7 @@ class Task < ApplicationRecord
 
   before_validation :set_user, :set_default_due_date, on: :create
 
-  validates :title, :project_id, :user_id, :due_date,  presence: true
+  validates :title, :project_id, :user_id, presence: true
 
   normalizes :description, with: -> (description) { description.blank? ? nil : description }
 
