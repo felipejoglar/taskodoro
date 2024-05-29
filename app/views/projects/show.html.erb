@@ -28,7 +28,11 @@
         <li>
           <%= task.title %> - <%= task.completed ? "Completed" : "Incomplete" %>
           <p><%= task.description %></p>
-          <p>Due: <%= task.due_date.strftime("%B %d, %Y") if task.due_date.present? %></p>
+          <p>Due: <%= task.due_date.strftime("%B %d, %Y") %></p>
+          <div class="flex">
+            <%= link_to 'Edit', edit_project_task_path(Current.user, @project, task), class: 'btn-primary' %>
+            <%= button_to 'Delete', project_task_path(Current.user, @project, task), data: { turbo_confirm: 'Are you sure?' }, method: :delete, class: 'btn-primary' %>
+          </div>
         </li>
       <% end %>
     </ul>

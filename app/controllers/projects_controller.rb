@@ -38,7 +38,7 @@ class ProjectsController < ApplicationController
     if @project.destroy
       redirect_to_projects
     else
-      redirect_to_project @project
+      render :show
     end
   end
 

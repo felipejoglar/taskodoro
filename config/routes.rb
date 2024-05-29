@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     get "/", to: "projects#index", as: :home
 
     resources :projects do
-      resources :tasks
+      resources :tasks, except: :index
     end
 
     resource :sign_out, only: :destroy, controller: "sessions"
