@@ -1,9 +1,9 @@
-<% content_for :title, "Editing #{@project.title}" %>
+<% content_for :title, "Editing #{@task.title}" %>
 <div class="max-w-screen-lg mx-auto">
   <h1 class="text-center mt-4">Edit Project</h1>
 
   <div class="form-container">
-    <%= form_with model: @project, url: project_path(Current.user, @project) do |form| %>
+    <%= form_with model: @task, url: project_task_path do |form| %>
       <%= render "shared/form_flash", object: form.object %>
       <div>
         <%= form.label :title, class: "label" %>
@@ -12,6 +12,14 @@
       <div>
         <%= form.label :description, class: "label" %>
         <%= form.text_area :description, rows: 3, class: "input" %>
+      </div>
+      <div>
+        <%= form.label :due_date %>
+        <%= form.date_field :due_date, min: Date.today, class: "input" %>
+      </div>
+      <div class="field">
+        <%= form.label :completed %>
+        <%= form.check_box :completed %>
       </div>
       <div>
         <%= form.submit 'Save Changes', class: 'btn-primary' %>
