@@ -11,7 +11,7 @@ class Task < ApplicationRecord
   private
 
   def set_user
-    self.user = Current.user
+    self.user ||= Current.user
   end
 
   def set_default_due_date
