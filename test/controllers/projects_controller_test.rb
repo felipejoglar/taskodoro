@@ -5,6 +5,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = sign_in_as(name: "Test User", email: "test@taskodoro.com", password: "a_valid_password")
     @projects = @user.projects.all
+    Task.create(title: "A task", project: @projects.first, user: @user)
   end
 
   test "getting the list of projects" do
@@ -22,6 +23,10 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     assert_response :ok
     assert_select "h1", project.title
     assert_select "p", "Description: #{project.description || "No description provided"}"
+
+    project.tasks.each do|task|
+      assert_select "a", task.title
+    end
   end
 
   test "creating a new project" do
